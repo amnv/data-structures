@@ -13,7 +13,7 @@ class Heap {
 
             //reorganize array
             bool flag = false;
-            for(int i = v.size() -1; i >= 0; i = ceil(i/2.0) - 1) {
+            for(int i = v.size() -1; i >= 0; i = (i >> 1) - 1) {
                 if (i == 0) {
                     if (flag) break;
 
@@ -37,7 +37,7 @@ class Heap {
             v.pop_back();
 
             for (int i = 0; i < v.size(); i++) {
-                int lower_child = lower((i * 2) + 1, (i * 2) + 2);
+                int lower_child = lower((i << 1) + 1, (i << 1) + 2);
                 if (lower_child < v.size()
                     && v[i] > v[lower_child]) {
                     swap(v[i], v[lower_child]);
